@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  height: 100vh;
+
+  font-size: 3rem;
+  font-family: Consolas;
+}
+
+.gradient-text {
+  font-size: 72px;
+  background: linear-gradient(45deg, #ff6a00, #ee0979);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
