@@ -24,7 +24,6 @@ public class Compiler
 
         __default__width = 800;
         __default__height = 600;
-        string __default__title_text = "ZEA";
 
         if (code.Contains("init"))
         {

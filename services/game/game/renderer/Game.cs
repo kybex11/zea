@@ -1,6 +1,8 @@
 ﻿using OpenTK.Graphics.OpenGL;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
+using OpenTK.Windowing.GraphicsLibraryFramework;
+using System.Text;
 
 using game.renderer.src.camera;
 
@@ -44,6 +46,7 @@ namespace game.renderer
     {
         private int ___width;
         private int ___height;
+        private StringBuilder _inputText = new StringBuilder();
 
         public GameMenu(int width, int height, string title) : base(GameWindowSettings.Default,
         new NativeWindowSettings()
@@ -60,7 +63,61 @@ namespace game.renderer
         protected override void OnLoad() {
             base.OnLoad();
 
-            
+            GL.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+        }
+
+        protected override void OnUpdateFrame(FrameEventArgs e)
+        {
+            base.OnUpdateFrame(e);
+
+            if (!IsFocused)
+            {
+                return;
+            }
+
+            // Handle keyboard input
+            var state = KeyboardState;
+            foreach (Keys key in Enum.GetValues(typeof(Keys)))
+            {
+                if (state.IsKeyPressed(key))
+                {
+                    if (key == Keys.Backspace && _inputText.Length > 0)
+                    {
+                        _inputText.Remove(_inputText.Length - 1, 1);
+                    }
+                    else if (key == Keys.Enter)
+                    {
+                        // Handle enter key if needed
+                    }
+                    else
+                    {
+                        char c = ConvertKeyToChar(key);
+                        if (c != '\0')
+                        {
+                            _inputText.Append(c);
+                        }
+                    }
+                }
+            }
+
+            GL.Clear(ClearBufferMask.ColorBufferBit);
+            // Render the text here using your preferred method
+            SwapBuffers();
+        }
+
+        private char ConvertKeyToChar(Keys key)
+        {
+            // Convert the key to a character
+            // This is a simple example and may need to be expanded for full functionality
+            if (key >= Keys.A && key <= Keys.Z)
+            {
+                return (char)('A' + (key - Keys.A));
+            }
+            if (key >= Keys.D0 && key <= Keys.D9)
+            {
+                return (char)('0' + (key - Keys.D0));
+            }
+            return '\0';
         }
     }
 
