@@ -63,3 +63,4 @@ C:\Users\admin\Desktop\zea\services\game\game\obj\Debug\net8.0\refint\game.dll
 C:\Users\admin\Desktop\zea\services\game\game\obj\Debug\net8.0\game.pdb
 C:\Users\admin\Desktop\zea\services\game\game\obj\Debug\net8.0\game.genruntimeconfig.cache
 C:\Users\admin\Desktop\zea\services\game\game\obj\Debug\net8.0\ref\game.dll
+C:\Users\admin\Desktop\zea\services\game\game\obj\Debug\net8.0\game.sourcelink.json

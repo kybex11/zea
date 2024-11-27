@@ -60,7 +60,8 @@ namespace game.renderer
             ___height = height;
         }
 
-        protected override void OnLoad() {
+        protected override void OnLoad()
+        {
             base.OnLoad();
 
             GL.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -74,50 +75,10 @@ namespace game.renderer
             {
                 return;
             }
-
-            // Handle keyboard input
-            var state = KeyboardState;
-            foreach (Keys key in Enum.GetValues(typeof(Keys)))
-            {
-                if (state.IsKeyPressed(key))
-                {
-                    if (key == Keys.Backspace && _inputText.Length > 0)
-                    {
-                        _inputText.Remove(_inputText.Length - 1, 1);
-                    }
-                    else if (key == Keys.Enter)
-                    {
-                        // Handle enter key if needed
-                    }
-                    else
-                    {
-                        char c = ConvertKeyToChar(key);
-                        if (c != '\0')
-                        {
-                            _inputText.Append(c);
-                        }
-                    }
-                }
-            }
-
+            
             GL.Clear(ClearBufferMask.ColorBufferBit);
-            // Render the text here using your preferred method
-            SwapBuffers();
-        }
 
-        private char ConvertKeyToChar(Keys key)
-        {
-            // Convert the key to a character
-            // This is a simple example and may need to be expanded for full functionality
-            if (key >= Keys.A && key <= Keys.Z)
-            {
-                return (char)('A' + (key - Keys.A));
-            }
-            if (key >= Keys.D0 && key <= Keys.D9)
-            {
-                return (char)('0' + (key - Keys.D0));
-            }
-            return '\0';
+            SwapBuffers();
         }
     }
 
